@@ -9,21 +9,21 @@ config :hello, HelloWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-# config :hello, Hello.Repo,
-#   adapter: Ecto.Adapters.Postgres,
-#   username: "postgres",
-#   password: "postgres",
-#   database: "hello_test",
-#   hostname: "localhost",
-#   pool: Ecto.Adapters.SQL.Sandbox
-
-
+Configure your database
 config :hello, Hello.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "yarik",
-  database: "yarik",
-  password: "rekmrf",
+  username: "postgres",
+  password: "postgres",
+  database: "hello_test",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox
+
+
+# config :hello, Hello.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+  # username: "yarik",
+  # database: "yarik",
+  # password: "rekmrf",
   # hostname: "localhost",
   # pool_size: 10
-  pool: Ecto.Adapters.SQL.Sandbox
+  # pool: Ecto.Adapters.SQL.Sandbox

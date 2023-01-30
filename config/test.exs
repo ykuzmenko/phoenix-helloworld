@@ -10,10 +10,20 @@ config :hello, HelloWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
+# config :hello, Hello.Repo,
+#   adapter: Ecto.Adapters.Postgres,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "hello_test",
+#   hostname: "localhost",
+#   pool: Ecto.Adapters.SQL.Sandbox
+
+
 config :hello, Hello.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "hello_test",
-  hostname: "localhost",
+  username: "yarik",
+  database: "yarik",
+  password: "rekmrf",
+  # hostname: "localhost",
+  # pool_size: 10
   pool: Ecto.Adapters.SQL.Sandbox

@@ -9,7 +9,7 @@ config :hello, HelloWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-Configure your database
+#Configure your database
 config :hello, Hello.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",

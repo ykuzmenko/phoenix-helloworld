@@ -15,6 +15,12 @@ jobs:
     name: Build and test
     runs-on: ubuntu-22.04
 
+    services:
+      testdb:
+        image: postgres:11-bullseye
+        environment:
+          POSTGRES_PASSWORD: postgres
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Elixir
@@ -30,20 +36,6 @@ jobs:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
-    - name: Install postgres
-      run: |
-        sudo apt-get update
-        sudo apt-get install gpg
-        sudo curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
-        sudo echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
-        sudo apt-get update
-        sudo apt-get install postgresql-11 postgresql-client-11
-        sudo pg_ctlcluster 11 main start
-    - name: Crete database user
-      run: |
-        sudo -u postgres createuser root
-        sudo -u postgres psql -c "alter user root with createdb;"
-        sudo -u postgres psql -c "alter user root with password 'root';"
     - name: Install dependencies
       run: mix deps.get
     - name: Run tests

@@ -12,10 +12,10 @@ config :logger, level: :warn
 #Configure your database
 config :hello, Hello.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "root",
-  password: "root",
-  database: "root",
-#  hostname: "localhost",
+  username: "postgres",
+  password: "postgres",
+  database: "postgres",
+  hostname: "testdb",
   pool: Ecto.Adapters.SQL.Sandbox
 
 

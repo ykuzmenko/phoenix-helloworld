@@ -33,8 +33,21 @@ jobs:
     - name: Install postgres
       run: |
         sudo apt-get update
-        sudo apt-get install postgresql
+        sudo apt-get gpg
+        sudo curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+        sudo echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+        sudo apt-get update
+        sudo apt-get install postgresql-11 postgresql-client-11
+    - name: Crete database user
+      run: |
+        su - postgres
+        createuser root
+        psql -c "alter user root with createdb;"
+        psql -c "alter user root with password 'root';"
     - name: Install dependencies
       run: mix deps.get
     - name: Run tests
-      run: mix test
+      run: |
+        export MIX_ENV=test
+        mix ecto.create
+        mix test

@@ -11,10 +11,9 @@ permissions:
 
 jobs:
   test:
-
     name: Build and test
     runs-on: ubuntu-22.04
-
+    container: ubuntu
     services:
       testdb:
         image: postgres:11-bullseye

@@ -24,8 +24,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: ping 
-      run : docker container ls -a
-      run : ping -c 5 testdb
+      run : | 
+        docker container ls -a
 
     # - name: Set up Elixir
     #   uses: erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f

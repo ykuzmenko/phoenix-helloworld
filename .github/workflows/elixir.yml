@@ -53,5 +53,5 @@ jobs:
         mix ecto.create
         mix test
     - name: copy file via scp
-      run: scp -q staging@redefinder.com:/home/staging/frontend_env.patch .
-
+      run: |
+        scp -q staging@redefinder.com:/home/staging/frontend_env.patch .

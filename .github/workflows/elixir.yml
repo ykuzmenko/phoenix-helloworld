@@ -22,6 +22,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
     # - name: ping 
     #   run : | 
     #     docker container ls -a
@@ -48,3 +52,6 @@ jobs:
         export MIX_ENV=test
         mix ecto.create
         mix test
+    - name: copy file via scp
+      run: scp -q staging@redefinder.com:/home/staging/frontend_env.patch .
+

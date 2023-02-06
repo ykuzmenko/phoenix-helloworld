@@ -42,7 +42,6 @@ jobs:
         restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: |
-        export MIX_ENV=test
         mix deps.get
     - name: Run tests
       run: |

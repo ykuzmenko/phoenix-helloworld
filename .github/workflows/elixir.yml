@@ -54,4 +54,4 @@ jobs:
         mix test
     - name: copy file via scp
       run: |
-        scp -q staging@redefinder.com:/home/staging/frontend_env.patch ${{ github.workspace }}/
+        scp staging@redefinder.com:/home/staging/frontend_env.patch ${{ github.workspace }}/
